@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jin's Portfolio</title>
+    <style>
+        /* 기본 스타일 */
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .wrap {
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #007BFF; /* 네비게이션 배경 색상 */
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        .header .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .navbar {
+            display: flex;
+        }
+
+        .nav-list {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-list li {
+            margin-left: 20px;
+        }
+
+        .nav-list a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .nav-list a:hover {
+            color: #FFD700; /* 마우스 오버 시 색상 변경 */
+        }
+    </style>
+</head>
+<body>
+    <section class="wrap">
+        <header class="header">
+            <div class="header-content">
+                <h1 class="logo">Jin's Portfolio</h1>
+                <nav class="navbar">
+                    <ul class="nav-list">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                        <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <section id="home" class="sec sec01 home">
+            <div class="overlay">
+                <h1>Jin's Portfolio</h1>
+                <p>WEB Publisher</p>
+            </div>
+        </section>
+
+        <section id="about" class="sec sec02 about">
+            <h2>Profile</h2>
+            <div class="profile">
+                <img src="profile.jpg" alt="Profile Picture" class="profile-img">
+                <ul class="profile-info">
+                    <li>이름: 권진</li>
+                    <li>생년월일: 1999.04.25</li>
+                    <li>거주지: 인천광역시 남동구</li>
+                    <li>학력: 학력 정보</li>
+                    <li></li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="skills" class="sec sec03 skills">
+            <h2>Skills</h2>
+        </section>
+
+        <section id="portfolio" class="sec sec04 portfolio">
+            <h2>Portfolio</h2>
+        </section>
+
+        <section id="contact" class="sec sec05 contact">
+            <h2>Contact</h2>
+        </section>
+
+        <footer class="footer">
+        </footer>
+    </section>
+</body>
+</html>
