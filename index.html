@@ -4,67 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jin's Portfolio</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        .wrap {
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        .header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background-color: #007BFF;
-            z-index: 100;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-        }
-
-        .header .logo {
-            color: white;
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        .navbar {
-            display: flex;
-        }
-
-        .nav-list {
-            list-style: none;
-            display: flex;
-            margin: 0;
-            padding: 0;
-        }
-
-        .nav-list li {
-            margin-left: 20px;
-        }
-
-        .nav-list a {
-            color: white;
-            font-size: 18px;
-        }
-
-        .nav-list a:hover {
-            color: #FFD700; 
-        }
-    </style>
 </head>
 <body>
     <section class="wrap">
         <header class="header">
-            <div class="header-content">
-                <h1 class="logo">Jin's Portfolio</h1>
-                <nav class="navbar">
+            <div class="container">
+                <h1 class="logo"><a href="#">Jin's Portfolio</a></h1>
+                <nav class="nav">
                     <ul class="nav-list">
                         <li><a href="#home">Home</a></li>
                         <li><a href="#about">About</a></li>
@@ -77,39 +23,99 @@
         </header>
 
         <section id="home" class="sec sec01 home">
-            <div class="overlay">
-                <h1>Jin's Portfolio</h1>
-                <p>WEB Publisher</p>
+            <div class="container">
+                <div class="overlay">
+                    <p>WEB Publisher</p>
+                    <h2>Jin's Portfolio</h2>
+                </div>
             </div>
         </section>
 
         <section id="about" class="sec sec02 about">
-            <h2>Profile</h2>
-            <div class="profile">
-                <img src="profile.jpg" alt="Profile Picture" class="profile-img">
-                <ul class="profile-info">
-                    <li>이름: 권진</li>
-                    <li>생년월일: 1999.04.25</li>
-                    <li>거주지: 인천광역시 남동구</li>
-                    <li>학력: 학력 정보</li>
-                    <li></li>
-                </ul>
+            <div class="container">
+                <h2>about</h2>
+                <article class="profile">
+                    <h3>Profile</h3>
+                    <img src="./images/profile.jpg" alt="profile">
+                    <ul class="profile-info">
+                        <li>이름: 권진</li>
+                        <li>생년월일: 1999.04.25</li>
+                        <li>거주지: 인천광역시 남동구</li>
+                        <li>
+                            학력
+                            <ul>
+                                <li>졸업</li>
+                                <li>교육</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+        <section id="skills" class="sec sec03 skills">
+            <div class="container">
+                <h2>Skills</h2>
+                <article>
+                    <ul>
+                        <li>
+                            <h3>html5</h3>
+                            <div class="img-box"><img src="./images/html_icon.png" alt="html5"></div>
+                        </li>
+                        <li>
+                            <h3>css3</h3>
+                            <div class="img-box"><img src="./images/css_icon.png" alt="css3"></div>
+                        </li>
+                        <li>
+                            <h3>javaScript</h3>
+                            <div class="img-box"><img src="./images/js_icon.png" alt="javaScript"></div>
+                        </li>
+                        <li>
+                            <h3>Photoshop</h3>
+                            <div class="img-box"><img src="./images/ps_icon.png" alt="html5"></div>
+                        </li>
+                        <li>
+                            <h3>Illustrator</h3>
+                            <div class="img-box"><img src="./images/ai_icon.png" alt="html5"></div>
+                        </li>
+                    </ul>
+                </article>
             </div>
         </section>
 
-        <section id="skills" class="sec sec03 skills">
-            <h2>Skills</h2>
-        </section>
-
         <section id="portfolio" class="sec sec04 portfolio">
-            <h2>Portfolio</h2>
+            <div class="container">
+                <h2>Portfolio</h2>
+                <div class="slider">
+                    <h3>slider</h3>
+                </div>
+            </div>
         </section>
 
         <section id="contact" class="sec sec05 contact">
-            <h2>Contact</h2>
+            <div class="container">
+                <h2>Contact</h2>
+                <article>
+                    <img src="./images/profile.jpg" alt="profile">
+                    <p>끝까지 봐주셔서 감사합니다</p>
+                    <h3>email</h3>
+                    <p>kwonjin862@gmail.com</p>
+                    <ul>
+                        <li><a href="#"><img src="./images/kakao_icon.png" alt=""></a></li>
+                        <li><a href="#"><img src="./images/instagram_icon.png" alt=""></a></li>
+                        <li><a href="#"><img src="./images/github_icon.png" alt=""></a></li>
+                    </ul>
+                </article>
+            </div>
         </section>
 
         <footer class="footer">
+            <div class="container">
+                <address>
+                    ©copyright 2024 design by jin 
+                    <br>
+                    <strong>이 사이트는 개인 포트폴리오 용도로 제작되었습니다.</strong>
+                </address>
+            </div>
         </footer>
     </section>
 </body>
