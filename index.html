@@ -8,6 +8,7 @@
     <title>Jin's Portfolio</title>
 </head>
 <style>
+    /* 기본 설정 */
     @font-face {
         font-family: 'Noto Sans KR';
         src: url(./fonts/NotoSansKR.ttf);
@@ -16,7 +17,6 @@
         font-family: 'BlackHanSans';
         src: url(./fonts/BlackHanSans-Regular.ttf);
     }
-
     :root{
         --main-color : #007bff;
         --sub-color : #e6f0fa;
@@ -28,6 +28,24 @@
         color:#000;
         scroll-behavior:smooth;
     }
+    .sec{            
+        height: 100vh;
+        padding: 76px 0;
+    }   
+    .sec .container{
+        width:1200px;
+        height: 100%;
+        margin:0 auto;
+    } 
+    .sec h2{
+        width:30%;
+        margin-top: 60px;
+        margin-bottom:120px;
+        font-family:'BlackHanSans';            
+        font-weight:500;
+        font-size:40px;
+    } 
+    /* HEADER */
     .header{
         padding:20px 0; 
         background:var(--main-color);
@@ -63,22 +81,7 @@
     .nav li:hover a{
         color: var(--gold-color);
     }
-    .sec{            
-        height: 100vh;
-        padding: 76px 0;
-    }   
-    .sec .container{
-        width:1200px;
-        margin:0 auto;
-    }
-    .sec h2{
-        width:30%;
-        margin-top: 60px;
-        margin-bottom:120px;
-        font-family:'BlackHanSans';            
-        font-weight:500;
-        font-size:40px;
-    } 
+    /* SEC01 - HOME */
     .sec01 .container{
         width:100%;
         height:100%;
@@ -111,6 +114,7 @@
     .sec01 .video-box video{
         width: 100%;
     }
+    /* SEC02 - PROFILE */
     .sec02 .profile{
         display: grid;
         grid-template-columns:1fr 1fr;
@@ -135,7 +139,6 @@
         margin-bottom: 24px;
         margin-left: 48px;
     }
-    
     .sec02 .profile-info li:last-child{
         margin-bottom: 0;
     }
@@ -145,9 +148,7 @@
     .sec02 .profile-info span{
         font-weight: 700;
     }
-    .sec .container{
-        height: 100%;
-    }
+    /* SEC03 - SKILLS */
     .sec03 h2{
         margin-bottom: 240px;
     }
@@ -156,17 +157,15 @@
         grid-template-columns: repeat(5, 1fr);
         gap: 48px;
     }
-
-
+    /* PROGRESS-CIRCLE */
     .progress-circle {
         position: relative;
         width: 120px;  /* 원형 바 크기 */
         height: 120px;
         margin: 20px;  
-        display: inline-block; /* 이미지가 한 줄에 정렬되도록 */
+        display: inline-block; 
         z-index: 10;
     }
-
     .progress-circle svg {
         width: 100%;
         height: 100%;
@@ -175,25 +174,20 @@
         text-align: center;
         justify-items: center;
     }
-
-
     .progress-circle circle {
         fill: none;
         stroke-width: 10;
         stroke-linecap: round;
     }
-
     .progress-circle circle:nth-child(1) {
         stroke: #e6e6e6;
     }
-
     .progress-circle circle:nth-child(2) {
         stroke: var(--main-color);
         stroke-dasharray: 282.6;
         stroke-dashoffset: 282.6; 
         transition: stroke-dashoffset 1s ease;
     }
-
     /* 이미지 배치 */
     .progress-image {
         position: absolute;
@@ -205,13 +199,11 @@
         border-radius: 50%;
         z-index: 5;
     }
-
     .progress-image img {
         width: 100%;
         height: 100%;
         object-fit: contain;
     }
-
     /* 진행도 숫자 스타일 */
     .progress-number {
         position: absolute;
@@ -222,12 +214,12 @@
         font-weight: bold;
         color: #007bff;
     }
-
+    /* SEC04 - PORTFOLIO */
+    /* SWIPER-SLIDE */
     .swiper {
       width: 100%;
       height: 75%;
     }
-
     .swiper-slide {
       text-align: center;
       font-size: 18px;
@@ -236,21 +228,19 @@
       justify-content: center;
       align-items: center;
     }
-
     .swiper-slide img {
       display: block;
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
-
     .swiper-button-next:after, .swiper-button-prev:after {
         color: var(--main-color);
     }
     .swiper-pagination-bullet-active{
         color: var(--main-color);
     }
-
+    /* SEC05 - CONTACT */
     .sec05 .contact-box{
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -280,6 +270,7 @@
     .sec05 .contact-con img{
         width: 40px;
     }
+    /* FOOTER */
     .footer{
         padding:32px 0;
         font-size:1.2em;
