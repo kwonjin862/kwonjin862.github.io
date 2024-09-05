@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <title>Jin's Portfolio</title>
 </head>
 <style>
@@ -63,24 +64,21 @@
         color: var(--gold-color);
     }
     .sec{            
-        padding:76px 0;
-    }
-    
+        height: 100vh;
+        padding: 76px 0;
+    }   
     .sec .container{
         width:1200px;
         margin:0 auto;
     }
     .sec h2{
         width:30%;
+        margin-top: 60px;
         margin-bottom:120px;
         font-family:'BlackHanSans';            
         font-weight:500;
         font-size:40px;
     } 
-    .sec01{
-        height: 100vh;
-        padding: 76px 0;
-    }
     .sec01 .container{
         width:100%;
         height:100%;
@@ -113,6 +111,182 @@
     .sec01 .video-box video{
         width: 100%;
     }
+    .sec02 .profile{
+        display: grid;
+        grid-template-columns:1fr 1fr;
+        gap: 48px;
+        align-items: center;
+        justify-content: center;
+    }
+    .sec02 .profile-info{
+        position: relative;
+    }
+    .sec02 .profile-info::after{
+        content: '';
+        display: block;
+        position: absolute;
+        box-sizing: border-box;
+        width: 1px;
+        height: 500px;
+        top: -75px;
+        border: 1px solid #999;
+    }
+    .sec02 .profile-info li{
+        margin-bottom: 24px;
+        margin-left: 48px;
+    }
+    
+    .sec02 .profile-info li:last-child{
+        margin-bottom: 0;
+    }
+    .sec02 .profile-info .edu{
+        margin-top: 12px;
+    }
+    .sec02 .profile-info span{
+        font-weight: 700;
+    }
+    .sec .container{
+        height: 100%;
+    }
+    .sec03 h2{
+        margin-bottom: 240px;
+    }
+    .sec03 .skills-box{
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 48px;
+    }
+
+
+    .progress-circle {
+        position: relative;
+        width: 120px;  /* 원형 바 크기 */
+        height: 120px;
+        margin: 20px;  
+        display: inline-block; /* 이미지가 한 줄에 정렬되도록 */
+        z-index: 10;
+    }
+
+    .progress-circle svg {
+        width: 100%;
+        height: 100%;
+        transform: rotate(-90deg);
+        align-items: center;
+        text-align: center;
+        justify-items: center;
+    }
+
+
+    .progress-circle circle {
+        fill: none;
+        stroke-width: 10;
+        stroke-linecap: round;
+    }
+
+    .progress-circle circle:nth-child(1) {
+        stroke: #e6e6e6;
+    }
+
+    .progress-circle circle:nth-child(2) {
+        stroke: var(--main-color);
+        stroke-dasharray: 282.6;
+        stroke-dashoffset: 282.6; 
+        transition: stroke-dashoffset 1s ease;
+    }
+
+    /* 이미지 배치 */
+    .progress-image {
+        position: absolute;
+        top: 57%;
+        left: 42%;
+        transform: translate(-50%, -50%);
+        width: 50px;  
+        height: 50px;
+        border-radius: 50%;
+        z-index: 5;
+    }
+
+    .progress-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    /* 진행도 숫자 스타일 */
+    .progress-number {
+        position: absolute;
+        top: 125%;
+        left: 40%;
+        transform: translate(-50%, -50%);
+        font-size: 1.2em;
+        font-weight: bold;
+        color: #007bff;
+    }
+
+    .swiper {
+      width: 100%;
+      height: 75%;
+    }
+
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .swiper-button-next:after, .swiper-button-prev:after {
+        color: var(--main-color);
+    }
+    .swiper-pagination-bullet-active{
+        color: var(--main-color);
+    }
+
+    .sec05 .contact-box{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 48px;
+        align-items: center;
+    }
+    .sec05 .contact-con .comment{
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 24px;
+    }
+    .sec05 .contact-box h3{
+        font-weight: 700;
+    }
+    .sec05 .contact-con ul{
+        display: flex;
+    }
+    .sec05 .contact-con li{
+        margin-right: 20px;
+    }
+    .sec05 .contact-con p{
+        margin-bottom: 16px;
+    }
+    .sec05 .contact-con li:last-child{
+        margin-right: 0;
+    }
+    .sec05 .contact-con img{
+        width: 40px;
+    }
+    .footer{
+        padding:32px 0;
+        font-size:1.2em;
+        line-height:1.5;
+        text-align:center;
+        text-transform:capitalize;
+    }        
 </style>
 <body>
     <section class="wrap">
@@ -147,7 +321,7 @@
             <div class="container">
                 <h2 class="sec-tit">about</h2>
                 <article class="profile">
-                    <h3>Profile</h3>
+                    <!-- <h3>Profile</h3> -->
                     <img src="./images/profile.jpg" alt="profile">
                     <ul class="profile-info">
                         <li><span>이름 : </span>권진</li>
@@ -155,9 +329,11 @@
                         <li><span>거주지 : </span>인천광역시 남동구</li>
                         <li>
                             <span>학력</span>
-                            <ul>
-                                <li><span>2018.03~2021.02</span>&nbsp;인하공업전문대학 정보통신과</li>
-                                <li><span>2024.06~2024.10</span>&nbsp;인천IT직업능력개발학원 'UX UI 웹퍼블리싱&디자인, 영상이 결합된 웹 콘텐츠 제작'과정</li>
+                            <ul class="edu">
+                                <li><span>2018.03~2023.02</span>
+                                    <p>인하공업전문대학 정보통신과</p></li>
+                                <li><span>2024.06~2024.10</span>
+                                    <p>인천IT직업능력개발학원 'UX UI 웹퍼블리싱&<br>디자인, 영상이 결합된웹 콘텐츠 제작'과정</p></li>
                             </ul>
                         </li>
                     </ul>
@@ -169,26 +345,71 @@
             <div class="container">
                 <h2 class="sec-tit">Skills</h2>
                 <article>
-                    <ul>
+                    <ul class="skills-box">
                         <li>
-                            <h3>html5</h3>
-                            <div class="img-box"><img src="./images/html_icon.png" alt="html5"></div>
+                            <h3>HTML5</h3>
+                            <div class="progress-circle" data-progress="90">
+                                <svg>
+                                    <circle cx="50" cy="50" r="45"></circle>
+                                    <circle cx="50" cy="50" r="45"></circle>
+                                </svg>
+                                <div class="progress-image">
+                                    <img src="./images/html_icon.png" alt="HTML5 icon">
+                                </div>
+                                <div class="progress-number">90%</div>
+                            </div>
                         </li>
                         <li>
-                            <h3>css3</h3>
-                            <div class="img-box"><img src="./images/css_icon.png" alt="css3"></div>
+                            <h3>CSS3</h3>
+                            <div class="progress-circle" data-progress="80">
+                                <svg>
+                                    <circle cx="50" cy="50" r="45"></circle>
+                                    <circle cx="50" cy="50" r="45"></circle>
+                                </svg>
+                                <div class="progress-image">
+                                    <img src="./images/css_icon.png" alt="CSS3 icon">
+                                </div>
+                                <div class="progress-number">80%</div>
+                            </div>
                         </li>
                         <li>
-                            <h3>javaScript</h3>
-                            <div class="img-box"><img src="./images/js_icon.png" alt="javaScript"></div>
+                            <h3>JavaScript</h3>
+                            <div class="progress-circle" data-progress="75">
+                                <svg>
+                                    <circle cx="50" cy="50" r="45"></circle>
+                                    <circle cx="50" cy="50" r="45"></circle>
+                                </svg>
+                                <div class="progress-image">
+                                    <img src="./images/js_icon.png" alt="JavaScript icon">
+                                </div>
+                                <div class="progress-number">75%</div>
+                            </div>
                         </li>
                         <li>
                             <h3>Photoshop</h3>
-                            <div class="img-box"><img src="./images/ps_icon.png" alt="html5"></div>
+                            <div class="progress-circle" data-progress="70">
+                                <svg>
+                                    <circle cx="50" cy="50" r="45"></circle>
+                                    <circle cx="50" cy="50" r="45"></circle>
+                                </svg>
+                                <div class="progress-image">
+                                    <img src="./images/ps_icon.png" alt="Photoshop icon">
+                                </div>
+                                <div class="progress-number">70%</div>
+                            </div>
                         </li>
                         <li>
                             <h3>Illustrator</h3>
-                            <div class="img-box"><img src="./images/ai_icon.png" alt="html5"></div>
+                            <div class="progress-circle" data-progress="65">
+                                <svg>
+                                    <circle cx="50" cy="50" r="45"></circle>
+                                    <circle cx="50" cy="50" r="45"></circle>
+                                </svg>
+                                <div class="progress-image">
+                                    <img src="./images/ai_icon.png" alt="Illustrator icon">
+                                </div>
+                                <div class="progress-number">65%</div>
+                            </div>
                         </li>
                     </ul>
                 </article>
@@ -198,25 +419,40 @@
         <section id="portfolio" class="sec sec04 portfolio">
             <div class="container">
                 <h2 class="sec-tit">Portfolio</h2>
-                <div class="slider">
-                    <h3>slider</h3>
-                </div>
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper">
+                      <div data-hash="slide1" class="swiper-slide">Slide 1</div>
+                      <div data-hash="slide2" class="swiper-slide">Slide 2</div>
+                      <div data-hash="slide3" class="swiper-slide">Slide 3</div>
+                      <div data-hash="slide4" class="swiper-slide">Slide 4</div>
+                      <div data-hash="slide5" class="swiper-slide">Slide 5</div>
+                      <div data-hash="slide6" class="swiper-slide">Slide 6</div>
+                      <div data-hash="slide7" class="swiper-slide">Slide 7</div>
+                      <div data-hash="slide8" class="swiper-slide">Slide 8</div>
+                      <div data-hash="slide9" class="swiper-slide">Slide 9</div>
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-pagination"></div>
+                  </div>
             </div>
         </section>
 
         <section id="contact" class="sec sec05 contact">
             <div class="container">
                 <h2 class="sec-tit">Contact</h2>
-                <article>
+                <article class="contact-box">
                     <img src="./images/profile.jpg" alt="profile">
-                    <p>끝까지 봐주셔서 감사합니다</p>
-                    <h3>email</h3>
-                    <p>kwonjin862@gmail.com</p>
-                    <ul>
-                        <li><a href="#"><img src="./images/kakao_icon.png" alt=""></a></li>
-                        <li><a href="#"><img src="./images/instagram_icon.png" alt=""></a></li>
-                        <li><a href="#"><img src="./images/github_icon.png" alt=""></a></li>
-                    </ul>
+                    <article class="contact-con">
+                        <p class="comment">끝까지 봐주셔서 감사합니다.</p>
+                        <h3>email</h3>
+                        <p>kwonjin862@gmail.com</p>
+                        <ul class="sns-icons">
+                            <li><a href="#"><img src="./images/kakao_icon.png" alt=""></a></li>
+                            <li><a href="#"><img src="./images/instagram_icon.png" alt=""></a></li>
+                            <li><a href="#"><img src="./images/github_icon.png" alt=""></a></li>
+                        </ul>
+                    </article>
                 </article>
             </div>
         </section>
@@ -231,5 +467,33 @@
             </div>
         </footer>
     </section>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const progressCircles = document.querySelectorAll('.progress-circle');
+
+            progressCircles.forEach(circle => {
+                const progress = circle.getAttribute('data-progress');
+                const strokeDashoffset = 282.6 - (282.6 * progress) / 100;
+
+                const progressCircle = circle.querySelector('circle:nth-child(2)');
+                progressCircle.style.strokeDashoffset = strokeDashoffset;
+            });
+        });
+        var swiper = new Swiper(".mySwiper", {
+            spaceBetween: 30,
+            hashNavigation: {
+                watchState: true,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        });
+    </script>
 </body>
 </html>
