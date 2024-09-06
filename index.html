@@ -166,6 +166,7 @@
         font-weight: bold;
     }
 
+
     /* PROGRESS-CIRCLE */
     .progress-circle {
         position: relative;
@@ -227,6 +228,10 @@
         font-weight: bold;
         color: #007bff;
     }
+    .progress-number::after{
+        content: '%';
+        display: inline-block;
+    }
     /* SEC04 - PORTFOLIO */
     .sec04 h2{
         margin-bottom: 60px;
@@ -246,7 +251,6 @@
     }
     .swiper-slide img {
       display: block;
-      width: 100%;
       height: 100%;
       object-fit: contain;
     }
@@ -392,7 +396,7 @@
                                 <div class="progress-image">
                                     <img src="./images/js_icon.png" alt="JavaScript icon">
                                 </div>
-                                <div class="progress-number">70</div>
+                                <div class="progress-number">80</div>
                             </div>
                         </li>
                         <li>
@@ -405,7 +409,7 @@
                                 <div class="progress-image">
                                     <img src="./images/ps_icon.png" alt="Photoshop icon">
                                 </div>
-                                <div class="progress-number">80</div>
+                                <div class="progress-number">60</div>
                             </div>
                         </li>
                         <li>
@@ -418,7 +422,7 @@
                                 <div class="progress-image">
                                     <img src="./images/ai_icon.png" alt="Illustrator icon">
                                 </div>
-                                <div class="progress-number">70</div>
+                                <div class="progress-number">60</div>
                             </div>
                         </li>
                     </ul>
@@ -431,7 +435,7 @@
                 <h2 class="sec-tit">Portfolio</h2>
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
-                      <div data-hash="slide1" class="slide swiper-slide">
+                      <div data-hash="slide1" class="swiper-slide">
                         <img src="./images/MEGABOX.jpg" alt="MEGABOX">
                       </div>
                       <div data-hash="slide2" class="swiper-slide">Slide 2</div>
