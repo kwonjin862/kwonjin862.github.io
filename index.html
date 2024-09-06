@@ -3,309 +3,530 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="./favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="./css/reset.css">
-    <!-- 공통스타일 -->
-    <link rel="stylesheet" href="./css/style.css">
-    <!-- index 스타일 -->
-    <link rel="stylesheet" href="./css/index.css">
-    <title>빽다방</title>  
-    <style>
-        .main-banner .container{
-            position:relative;
-        }
-        .btn-pager{
-            position:absolute;
-            left:50%;
-            bottom:30px;
-            transform:translate(-50%,0);
-            z-index:10000;
-            display:grid;
-            grid-template-columns:12px 12px 12px 12px;
-            grid-template-rows:12px;
-            gap:12px;
-        }
-        .btn-pager span{
-            border-radius:50%;
-            background:var(--gray-color10);
-            text-indent:-99999px;
-            cursor:pointer;
-        }
-        .btn-pager span.active{
-            background:var(--primary-color);
-        }
-    </style>  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <title>Jin's Portfolio</title>
 </head>
+<style>
+    /* 기본 설정 */
+    @font-face {
+        font-family: 'Noto Sans KR';
+        src: url(./fonts/NotoSansKR.ttf);
+    }
+    @font-face {
+        font-family: 'BlackHanSans';
+        src: url(./fonts/BlackHanSans-Regular.ttf);
+    }
+    :root{
+        --main-color : #007bff;
+        --sub-color : #e8f2fc;
+        --gold-color : #ffc107;
+        font-family : 'Noto Sans KR';
+        font-weight:400;
+        font-size:16px;
+        line-height:1.5;
+        color:#000;
+        scroll-behavior:smooth;
+    }
+    .sec{            
+        height: 1000px;
+        padding: 76px 0;
+    }
+    .sec .container{
+        width:1200px;
+        height: 100%;
+        margin:0 auto;
+    }
+    .sec h2{
+        width:30%;
+        margin-top: 60px;
+        margin-bottom:120px;
+        font-family:'BlackHanSans';            
+        font-weight:500;
+        font-size:40px;
+    }
+    .sec03, .sec05{
+        background: var(--sub-color);
+    }
+    /* HEADER */
+    .header{
+        padding:20px 0; 
+        background:var(--main-color);
+        position:fixed;
+        left:0;
+        right:0;
+        top:0;
+        z-index:10000;
+        color:#fff;
+    }
+    .header .container{
+        max-width:1800px;
+        margin:0 auto;
+        padding:0 36px;
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+    }
+    .header .logo{
+        font-family: 'BlackHanSans';
+        font-size: 24px;
+    }
+    .nav ul{
+        display:flex;
+        justify-content:flex-end;
+        align-items:center;
+    }
+    .nav li{
+        margin-left:3em;
+        font-size:1.2em;
+        font-weight: 700;          
+    }
+    .nav li:hover a{
+        color: var(--gold-color);
+    }
+    /* SEC01 - HOME */
+    .sec01 .container{
+        width:100%;
+        height:100%;
+        display:flex;
+        flex-flow:column nowrap;
+        justify-content:space-around;
+        align-items:center;
+        position:relative;
+    }
+    .sec01 .overlay{
+        position: absolute;
+        font-family: 'BlackHanSans';
+        left: 500px;
+        z-index:10;
+    }
+    .sec01 .overlay p{
+        font-size: 36px;
+    }
+    .sec01 .overlay h2{
+        font-size: 72px;
+    }
+    .sec01 .video-box{
+        position:absolute;
+        left:0;
+        right:0;
+        top:-220px;
+        bottom:0;
+        z-index:9;
+    }
+    .sec01 .video-box video{
+        width: 1920px;
+    }
+    /* SEC02 - PROFILE */
+    .sec02 .profile{
+        display: grid;
+        grid-template-columns:1fr 1fr;
+        gap: 48px;
+        align-items: center;
+        justify-content: center;
+    }
+    .sec02 .profile-info{
+        position: relative;
+    }
+    .sec02 .profile-info::after{
+        content: '';
+        display: block;
+        position: absolute;
+        box-sizing: border-box;
+        width: 1px;
+        height: 500px;
+        top: -75px;
+        border: 1px solid #999;
+    }
+    .sec02 .profile-info li{
+        margin-bottom: 24px;
+        margin-left: 48px;
+    }
+    .sec02 .profile-info li:last-child{
+        margin-bottom: 0;
+    }
+    .sec02 .profile-info .edu{
+        margin-top: 12px;
+    }
+    .sec02 .profile-info span{
+        font-weight: 700;
+    }
+    /* SEC03 - SKILLS */
+    .sec03 h2{
+        margin-bottom: 240px;
+    }
+    .sec03 .skills-box{
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 48px;
+        text-align: center;
+    }
+    .sec03 .skills-box h3{
+        font-size: 1.2em;
+        font-weight: bold;
+    }
+
+    /* PROGRESS-CIRCLE */
+    .progress-circle {
+        position: relative;
+        width: 120px;  /* 원형 바 크기 */
+        height: 120px;
+        margin: 20px;  
+        display: inline-block; 
+    }
+    .progress-circle svg {
+        width: 100%;
+        height: 100%;
+        transform: rotate(-90deg);
+        align-items: center;
+        text-align: center;
+        justify-items: center;
+    }
+    .progress-circle circle {
+        fill: none;
+        stroke-width: 10;
+        stroke-linecap: round;
+    }
+    .progress-circle circle:nth-child(1) {
+        stroke: #e6e6e6;
+    }
+    .progress-circle circle:nth-child(2) {
+        stroke: var(--main-color);
+        stroke-dasharray: 282.6;
+        stroke-dashoffset: 282.6; 
+        transition: stroke-dashoffset 1s ease;
+    }
+    /* 프로그레스 바 초기 숨김 설정 */
+    .progress-circle, .skills-box h3 {
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+    }
+    /* 이미지 배치 */
+    .progress-image {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 75px;  
+        height: 75px;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+    .progress-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+    /* 진행도 숫자 스타일 */
+    .progress-number {
+        position: absolute;
+        top: 125%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 1.2em;
+        font-weight: bold;
+        color: #007bff;
+    }
+    /* SEC04 - PORTFOLIO */
+    .sec04 h2{
+        margin-bottom: 60px;
+    }
+    /* SWIPER-SLIDE */
+    .swiper {
+      width: 100%;
+      height: 75%;
+    }
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .swiper-button-next:after, .swiper-button-prev:after {
+        color: var(--main-color);
+    }
+    .swiper-pagination-bullet-active{
+        color: var(--main-color);
+    }
+    /* SEC05 - CONTACT */
+    .sec05{
+        height: 800px;
+    }
+    .sec05 .contact-box{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 48px;
+        align-items: center;
+    }
+    .sec05 .contact-con .comment{
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 24px;
+    }
+    .sec05 .contact-box h3{
+        font-weight: 700;
+    }
+    .sec05 .contact-con ul{
+        display: flex;
+    }
+    .sec05 .contact-con li{
+        margin-right: 20px;
+    }
+    .sec05 .contact-con p{
+        margin-bottom: 16px;
+    }
+    .sec05 .contact-con li:last-child{
+        margin-right: 0;
+    }
+    .sec05 .contact-con img{
+        width: 40px;
+    }
+    /* FOOTER */
+    .footer{
+        padding:32px 0;
+        font-size:1.2em;
+        line-height:1.5;
+        text-align:center;
+        text-transform:capitalize;
+    }        
+</style>
 <body>
     <section class="wrap">
         <header class="header">
             <div class="container">
-                <h1 class="logo"><a href="./index.html">빽다방</a></h1>
-                <div class="btn-nav"><span>네비버튼</span><span></span><span></span></div>
+                <h1 class="logo"><a href="index.html">Jin's Portfolio</a></h1>
                 <nav class="nav">
-                    <ul class="main-nav">
-                        <li>
-                            <span>빽다방</span>
-                            <!-- <ul class="sub-nav">
-                                <li><a href="#">CEO 인사말</a></li>
-                                <li><a href="#">빽다방 소개</a></li>
-                                <li><a href="#">멤버십 / 앱 소개</a></li>
-                                <li><a href="#">커피 이야기</a></li>
-                                <li><a href="#">교육 이야기</a></li>                                
-                            </ul> -->
-                        </li>
-                        <li>
-                            <span>메뉴</span>
-                            <!-- <ul class="sub-nav">
-                                <li><a href="#">신메뉴</a></li>
-                                <li><a href="#">커피</a></li>
-                                <li><a href="#">음료</a></li>
-                                <li><a href="#">아이스크림/디저트</a></li>
-                                <li><a href="#">빽스치노</a></li>                                
-                            </ul> -->
-                        </li>
-                        <li>
-                            <span>소식</span>
-                            <!-- <ul class="sub-nav">
-                                <li><a href="#">소식</a></li>
-                                <li><a href="#">이벤트</a></li>
-                                <li><a href="#">친절 우수매장</a></li>
-                            </ul> -->
-                        </li>
-                        <li>
-                            <span>커뮤니티</span>
-                            <!-- <ul class="sub-nav">
-                                <li><a href="#">커피 클래스</a></li>
-                            </ul> -->
-                        </li>
-                        <li>
-                            <span>매장안내</span>
-                            <!-- <ul class="sub-nav">
-                                <li><a href="#">매장찾기</a></li>
-                            </ul> -->
-                        </li>
-                        <li>
-                            <span>창업안내</span>
-                            <!-- <ul class="sub-nav">
-                                <li><a href="#">왜 빽다방인가요?</a></li>
-                                <li><a href="#">창업상담 신청</a></li>
-                                <li><a href="#">창업절차 및 조건</a></li>
-                                <li><a href="#">인테리어</a></li>
-                            </ul> -->
-                        </li>
-                        <li>
-                            <span>고객의 소리</span>
-                        </li>
+                    <ul class="nav-list">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                        <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="#contact">Contact</a></li>
                     </ul>
                 </nav>
-                <ul class="q-nav">
-                    <li><a href="#">더본코리아</a></li>
-                    <li><a href="#">페이스북</a></li>
-                    <li><a href="#">인스타그램</a></li>
-                </ul>
             </div>
         </header>
-        <section class="sec sec01 main-banner">
+
+        <section id="home" class="sec sec01 home">
             <div class="container">
-                <h2>이벤트</h2>
-                <div class="slider">
-                    <div class="active">
-                        <a href="#">
-                            <picture>
-                                <source media="(min-width:1020px)" srcset="./images/main-banner01.jpg">
-                                <img src="./images/m-main-banner01.jpg" alt="짱구 출시기념 이벤트 바로가기">
-                            </picture>
-                        </a>
-                    </div>
-                    <div>
-                        <a href="#">
-                            <picture>
-                                <source media="(min-width:1020px)" srcset="./images/main-banner02.jpg">
-                                <img src="./images/m-main-banner02.jpg" alt="슈크리미 출시기념 이벤트 바로가기">
-                            </picture>
-                        </a>
-                    </div>
-                    <div>
-                        <a href="#">
-                            <picture>
-                                <source media="(min-width:1020px)" srcset="./images/main-banner03.jpg">
-                                <img src="./images/m-main-banner03.jpg" alt="버블캔디 출시기념 이벤트 바로가기">
-                            </picture>
-                        </a>
-                    </div>
-                    <div>
-                        <a href="#">
-                            <picture>
-                                <source media="(min-width:1020px)" srcset="./images/main-banner04.jpg">
-                                <img src="./images/m-main-banner04.jpg" alt="빽다방 멤버십 바로가기">
-                            </picture>
-                        </a>
-                    </div>
+                <div class="overlay">
+                    <p>WEB Publisher</p>
+                    <h2>Jin's Portfolio</h2>
                 </div>
-                <div class="btn-pager">
-                    <span class="active">0</span><span>1</span><span>2</span><span>3</span>
+                <div class="video-box">
+                    <video src="./media/video.mp4"muted autoplay loop></video>
                 </div>
             </div>
         </section>
-        <section class="sec sec02 coffee-story story">
+
+        <section id="about" class="sec sec02 about">
             <div class="container">
-                <h2>PAIK’S COFFEE<br>STORY</h2>
-                <p>균형잡힌 바디감으로 긴 여운을 남기는 빽다방 커피를 만나보세요.</p>
-                <div class="link"><a href="#">커피스토리 바로가기</a></div>
-            </div>
-        </section>
-        <section class="sec sec03 brand-story story">
-            <div class="container">
-                <h2>PAIK’S BRAND<br>STORY</h2>
-                <p>합리적인 가격으로 만나는 맛있고 든든한 빽다방</p>
-                <div class="link"><a href="#">빽다방 소개 보러가기</a></div>
-            </div>
-        </section>
-        <section class="sec sec04 fresh-coffee story01">
-            <div class="container">
-                <h2>FRESH<br>COFFEE</h2>
-                <p>신선한 뉴크롭 원두를 사용하여<br>추출한 커피메뉴!</p>
-                <div class="link"><a href="#">프레쉬 커피 보러가기</a></div>
-            </div>
-        </section>
-        <section class="sec sec05 various-coffee story01">
-            <div class="container">
-                <h2>VARIOUS<br>BEVERAGE</h2>
-                <p>에이드, 티, 주스 등 취향대로<br>골라 먹는 즐거움!</p>
-                <div class="link"><a href="#">음료들 보러가기</a></div>
-            </div>
-        </section>
-        <section class="sec sec06 sweet-ccino story01">
-            <div class="container">
-                <h2>SWEET<br>PAIK'S CCINO</h2>
-                <p>달콤 시원한 빽다방<br>시그니처 메뉴!</p>
-                <div class="link"><a href="#">시그니처 보러가기</a></div>
-            </div>
-        </section>
-        <section class="sec sec07 dessert story01">
-            <div class="container">
-                <h2>TASTY<br>ICE CREAM /<br>DESSERT</h2>
-                <p>달콤한 아이스크림부터<br>든든한 브레드까지!</p>
-                <div class="link"><a href="#">디저트 보러가기</a></div>
-            </div>
-        </section>
-        <section class="sec sec08 fran-store">
-            <div class="container">
-                <h2>플랜차이즈와 스토어</h2>
-                <article class="art fran">
-                    <div class="art-txt">
-                        <h3>FRANCHISE</h3>
-                        <p>빽다방 창업안내를 도와드리겠습니다.</p>
-                    </div>
-                    <div class="link"><a href="#">플랜차이즈 바로가기</a></div>
-                </article>
-                <article class="art store">
-                    <div class="art-txt">
-                        <h3>STORE</h3>
-                        <p>원하는 지역의 매장을 검색해보세요!</p>
-                    </div>                    
-                    <form action="#" class="search-form">
-                        <input type="text" name="search-store" id="search-store">
-                        <input type="submit" value="매장찾기">
-                    </form>
-                </article>
-            </div>
-        </section>
-        <section class="sec sec09 sns">
-            <div class="container">
-                <div class="sns-txt">
-                    <h2>PAIK’S COFFEE SNS</h2>
-                    <p>#빽다방 #빽다방신메뉴 #빽다방이벤트</p>
-                </div>
-                <div class="link-sns">
-                    <a href="#">facebook 바로가기</a><a href="#">instagram 바로가기</a>
-                </div>
-            </div>
-        </section>
-        <aside class="aside">
-            <article class="art art01">
-                <ul>
-                    <li><a href="#">창업설명회 신청</a></li>
-                    <li><a href="#">창업상담 신청</a></li>
-                </ul>
-            </article>
-            <article class="art art02">
-                <div class="link-top"><a href="#top">문서 상단으로 이동</a></div>
-            </article>
-        </aside>
-        <footer class="footer">
-            <div class="container">
-                <article class="footer-logo">
-                    <a href="#"><img src="./images/logo-theborn.png" alt="더본코리아 바로가기"></a>
-                </article>
-                <article class="link-family">
-                    <h2 id="btn-family" class="btn-family">패밀리사이트 바로가기</h2>
-                    <ul id="family-list">
-                        <li><a href="#">더본코리아</a></li>
-                        <li><a href="#">창업센터</a></li>
-                        <li><a href="#">새마을식당</a></li>
-                        <li><a href="#">한신포차</a></li>
-                        <li><a href="#">역전우동</a></li>
-                        <li><a href="#">백스비어</a></li>
-                        <li><a href="#">롤링파스타</a></li>
-                        <li><a href="#">인생설렁탕</a></li>
-                        <li><a href="#">미정국수</a></li>
-                        <li><a href="#">리춘시장</a></li>
-                        <li><a href="#">원조쌈밥집</a></li>
-                        <li><a href="#">돌배기집</a></li>
-                        <li><a href="#">백철판</a></li>
-                        <li><a href="#">호텔더본</a></li>
+                <h2 class="sec-tit">about</h2>
+                <article class="profile">
+                    <!-- <h3>Profile</h3> -->
+                    <img src="./images/profile.jpg" alt="profile">
+                    <ul class="profile-info">
+                        <li><span>이름 : </span>권진</li>
+                        <li><span>생년월일 : </span>1999.04.25</li>
+                        <li><span>거주지 : </span>인천광역시 남동구</li>
+                        <li>
+                            <span>학력</span>
+                            <ul class="edu">
+                                <li><span>2018.03~2023.02</span>
+                                    <p>인하공업전문대학 정보통신과</p></li>
+                                <li><span>2024.06~2024.10</span>
+                                    <p>인천IT직업능력개발학원 'UX UI 웹퍼블리싱&<br>디자인, 영상이 결합된웹 콘텐츠 제작'과정</p></li>
+                            </ul>
+                        </li>
                     </ul>
                 </article>
-                <address>
-                    <span>(주)더본코리아</span>
-                    <span>사업자등록번호 211-86-00870</span>
-                    <span>대표이사 백종원</span>
-                    <span>주소: 서울시 강남구 봉은사로 1길 39 유성빌딩 5~6층</span>
-                    <span>팩스: 02-511-3864</span>
-                    <span>본사 대표전화: 02-549-3864</span>
-                    <span>가맹상담전화: 02-3447-0410</span>
-                    <span>고객센터: 1544-2360</span>
-                </address>
-                <article class="copyright">
-                    <p>COPYRIGHTⓒ 2018 THEBORN KOREA INC. ALL RIGHTS RESERVED</p>
+            </div>
+        </section>
+
+        <section id="skills" class="sec sec03 skills">
+            <div class="container">
+                <h2 class="sec-tit">Skills</h2>
+                <article>
+                    <ul class="skills-box">
+                        <li>
+                            <h3>HTML5</h3>
+                            <div class="progress-circle">
+                                <svg>
+                                    <circle cx="60" cy="60" r="45"></circle>
+                                    <circle cx="60" cy="60" r="45"></circle>
+                                </svg>
+                                <div class="progress-image">
+                                    <img src="./images/html_icon.png" alt="HTML5 icon">
+                                </div>
+                                <div class="progress-number">80</div>
+                            </div>
+                        </li>
+                        <li>
+                            <h3>CSS3</h3>
+                            <div class="progress-circle">
+                                <svg>
+                                    <circle cx="60" cy="60" r="45"></circle>
+                                    <circle cx="60" cy="60" r="45"></circle>
+                                </svg>
+                                <div class="progress-image">
+                                    <img src="./images/css_icon.png" alt="CSS3 icon">
+                                </div>
+                                <div class="progress-number">80</div>
+                            </div>
+                        </li>
+                        <li>
+                            <h3>JavaScript</h3>
+                            <div class="progress-circle">
+                                <svg>
+                                    <circle cx="60" cy="60" r="45"></circle>
+                                    <circle cx="60" cy="60" r="45"></circle>
+                                </svg>
+                                <div class="progress-image">
+                                    <img src="./images/js_icon.png" alt="JavaScript icon">
+                                </div>
+                                <div class="progress-number">70</div>
+                            </div>
+                        </li>
+                        <li>
+                            <h3>Photoshop</h3>
+                            <div class="progress-circle">
+                                <svg>
+                                    <circle cx="60" cy="60" r="45"></circle>
+                                    <circle cx="60" cy="60" r="45"></circle>
+                                </svg>
+                                <div class="progress-image">
+                                    <img src="./images/ps_icon.png" alt="Photoshop icon">
+                                </div>
+                                <div class="progress-number">80</div>
+                            </div>
+                        </li>
+                        <li>
+                            <h3>Illustrator</h3>
+                            <div class="progress-circle">
+                                <svg>
+                                    <circle cx="60" cy="60" r="45"></circle>
+                                    <circle cx="60" cy="60" r="45"></circle>
+                                </svg>
+                                <div class="progress-image">
+                                    <img src="./images/ai_icon.png" alt="Illustrator icon">
+                                </div>
+                                <div class="progress-number">70</div>
+                            </div>
+                        </li>
+                    </ul>
                 </article>
+            </div>
+        </section>
+
+        <section id="portfolio" class="sec sec04 portfolio">
+            <div class="container">
+                <h2 class="sec-tit">Portfolio</h2>
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper">
+                      <div data-hash="slide1" class="slide swiper-slide">
+                        <img src="./images/MEGABOX.jpg" alt="MEGABOX">
+                      </div>
+                      <div data-hash="slide2" class="swiper-slide">Slide 2</div>
+                      <div data-hash="slide3" class="swiper-slide">Slide 3</div>
+                      <div data-hash="slide4" class="swiper-slide">Slide 4</div>
+                      <div data-hash="slide5" class="swiper-slide">Slide 5</div>
+                      <div data-hash="slide6" class="swiper-slide">Slide 6</div>
+                      <div data-hash="slide7" class="swiper-slide">Slide 7</div>
+                      <div data-hash="slide8" class="swiper-slide">Slide 8</div>
+                      <div data-hash="slide9" class="swiper-slide">Slide 9</div>
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-pagination"></div>
+                  </div>
+            </div>
+        </section>
+
+        <section id="contact" class="sec sec05 contact">
+            <div class="container">
+                <h2 class="sec-tit">Contact</h2>
+                <article class="contact-box">
+                    <img src="./images/profile.jpg" alt="profile">
+                    <article class="contact-con">
+                        <p class="comment">끝까지 봐주셔서 감사합니다.</p>
+                        <h3>email</h3>
+                        <p>kwonjin862@gmail.com</p>
+                        <ul class="sns-icons">
+                            <li><a href="#"><img src="./images/kakao_icon.png" alt=""></a></li>
+                            <li><a href="#"><img src="./images/instagram_icon.png" alt=""></a></li>
+                            <li><a href="#"><img src="./images/github_icon.png" alt=""></a></li>
+                        </ul>
+                    </article>
+                </article>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="container">
+                <address>
+                    ©copyright 2024 design by jin 
+                    <br>
+                    <strong>이 사이트는 개인 포트폴리오 용도로 제작되었습니다.</strong>
+                </address>
             </div>
         </footer>
     </section>
-    <script src="./js/jquery.min.js"></script>
-    <script src="./js/default.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-        let arrSlide = document.querySelectorAll('.slider div');
-        let arrPager = document.querySelectorAll('.btn-pager span');
-        let lastIdx = arrSlide.length - 1;
-        let activeIdx = 1;
-        let mainSlider = setInterval(function(){
-            for(let idx=0;idx<=lastIdx;idx++){
-                arrSlide[idx].classList.remove('active');
-                arrPager[idx].classList.remove('active');
-            }   
-            if(activeIdx>lastIdx){
-                activeIdx=0;
-            }                     
-            arrSlide[activeIdx].classList.add('active');
-            arrPager[activeIdx++].classList.add('active');
-        },1000);
+        window.addEventListener('DOMContentLoaded', () => {
+            const progressCircles = document.querySelectorAll('.progress-circle');
+            const progressNumbers = document.querySelectorAll('.progress-number');
+            const skillsSection = document.querySelector('#skills');
+            const skillTitles = document.querySelectorAll('.skills-box h3'); // h3 요소들
 
-        for(let idx=0;idx<=lastIdx;idx++){
-            arrPager[idx].onclick=function(e){
-                clearInterval(mainSlider);
-                for(let idx=0;idx<=lastIdx;idx++){
-                    arrSlide[idx].classList.remove('active');
-                    arrPager[idx].classList.remove('active');
+            function Scroll() {
+                const sectionTop = skillsSection.getBoundingClientRect().top;
+                const triggerPoint = window.innerHeight / 1.2;
+
+                if (sectionTop < triggerPoint) {
+                    progressCircles.forEach((circle, index) => {
+                        setTimeout(() => {
+                            const progress = Number(progressNumbers[index].innerHTML);
+                            const strokeDashoffset = 282.6 - (282.6 * progress) / 100;
+
+                            const progressCircle = circle.querySelector('circle:nth-child(2)');
+                            progressCircle.style.strokeDashoffset = strokeDashoffset;
+
+                            circle.style.opacity = '1';
+                            skillTitles[index].style.opacity = '1';
+                        }, index * 500); // 0.5초 간격으로 순차적으로 애니메이션 실행
+
+                    });
+
+                    window.removeEventListener('scroll', Scroll);
                 }
-                let activeIdx = e.target.innerHTML;                
-                arrSlide[activeIdx].classList.add('active');
-                arrPager[activeIdx].classList.add('active');                
             }
-        }
-            
-       
+
+            window.addEventListener('scroll', Scroll);
+        });
+
+        var swiper = new Swiper(".mySwiper", {
+            spaceBetween: 30,
+            hashNavigation: {
+                watchState: true,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        });
     </script>
 </body>
 </html>
