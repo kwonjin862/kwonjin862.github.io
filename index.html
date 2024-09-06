@@ -28,14 +28,15 @@
         color:#000;
         scroll-behavior:smooth;
     }
-    .sec{            
+    .sec{
+        width: 1920px;      
         height: 1000px;
         padding: 76px 0;
     }
     .sec .container{
-        width:1200px;
+        width: 1200px;
         height: 100%;
-        margin:0 auto;
+        margin: 0 auto;
     }
     .sec h2{
         width:30%;
@@ -238,22 +239,44 @@
     }
     /* SWIPER-SLIDE */
     .swiper {
-      width: 100%;
-      height: 75%;
+        width: 100%;
+        height: 75%;
     }
     .swiper-slide {
-      text-align: center;
-      font-size: 18px;
-      background: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+        text-align: center;
+        font-size: 18px;
+        background: var(--sub-color);
+        border-radius: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .swiper-slide .slider-con{
+        width: 80%;
+        position: relative;
+    }
+    .slider-con .more{
+        width: 80px;
+        height: 80px;
+        background-image: url(./images/more.png);
+        background-size: contain;
+        position: absolute;
+        right: 0;
+        bottom: 40px;
+        transition: 0.3s;
+    }
+    .slider-con .more:hover{
+        background: url(./images/github_icon.png);
+        background-size: contain;
+        
     }
     .swiper-slide img {
-      display: block;
-      height: 100%;
-      object-fit: contain;
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
     }
+    
     .swiper-button-next:after, .swiper-button-prev:after {
         color: var(--main-color);
     }
@@ -300,7 +323,10 @@
         line-height:1.5;
         text-align:center;
         text-transform:capitalize;
-    }        
+    }
+    .footer .container{
+        width: 1920px;
+    }
 </style>
 <body>
     <section class="wrap">
@@ -436,10 +462,23 @@
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
                       <div data-hash="slide1" class="swiper-slide">
-                        <img src="./images/MEGABOX.jpg" alt="MEGABOX">
+                        <div class="slider-con">
+                            <img src="./images/MEGABOX.jpg" alt="MEGABOX">
+                            <a class="more" href="#" target="_blank"></a>
+                        </div>
                       </div>
-                      <div data-hash="slide2" class="swiper-slide">Slide 2</div>
-                      <div data-hash="slide3" class="swiper-slide">Slide 3</div>
+                      <div data-hash="slide2" class="swiper-slide">
+                        <div class="slider-con">
+                            <img src="./images/MEGABOX.jpg" alt="MEGABOX">
+                            <a class="more" href="#" target="_blank"></a>
+                        </div>
+                      </div>
+                      <div data-hash="slide3" class="swiper-slide">
+                        <div class="slider-con">
+                            <img src="./images/MEGABOX.jpg" alt="MEGABOX">
+                            <a class="more" href="#" target="_blank"></a>
+                        </div>
+                      </div>
                       <div data-hash="slide4" class="swiper-slide">Slide 4</div>
                       <div data-hash="slide5" class="swiper-slide">Slide 5</div>
                       <div data-hash="slide6" class="swiper-slide">Slide 6</div>
@@ -483,6 +522,7 @@
             </div>
         </footer>
     </section>
+    <script src="./js/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
         window.addEventListener('DOMContentLoaded', () => {
@@ -529,8 +569,10 @@
             navigation: {
                 nextEl: ".swiper-button-next",
                 prevEl: ".swiper-button-prev",
-            },
+            }
         });
+
+
     </script>
 </body>
 </html>
