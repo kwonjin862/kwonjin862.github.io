@@ -52,7 +52,7 @@
     /* HEADER */
     .header{
         padding:20px 0; 
-        background:var(--main-color);
+        background:linear-gradient(var(--main-color) 30%, skyblue);
         position:fixed;
         left:0;
         right:0;
@@ -68,9 +68,13 @@
         justify-content:space-between;
         align-items:center;
     }
-    .header .logo{
+    .header .logo a{
         font-family: 'BlackHanSans';
-        font-size: 24px;
+        font-size: 1.5em;
+    }
+    .header .logo:hover a{
+        font-size: 1.7em;
+        transition: all 0.3s;
     }
     .nav ul{
         display:flex;
@@ -80,11 +84,14 @@
     .nav li{
         margin-left:3em;
         font-size:1.2em;
-        font-weight: 700;          
+        font-weight: 700;  
     }
     .nav li:hover a{
+        font-size: 1.4em;
         color: var(--gold-color);
+        transition: all 0.3s;
     }
+    .nav li
     /* SEC01 - HOME */
     .sec01 .container{
         width:100%;
@@ -99,6 +106,7 @@
         position: absolute;
         font-family: 'BlackHanSans';
         left: 500px;
+        top: 300px;
         z-index:10;
     }
     .sec01 .overlay p{
@@ -113,6 +121,7 @@
         right:0;
         top:-220px;
         bottom:0;
+        padding-top: 100px;
         z-index:9;
     }
     .sec01 .video-box video{
@@ -125,6 +134,9 @@
         gap: 48px;
         align-items: center;
         justify-content: center;
+    }
+    .sec02 .profile img{
+        border-radius: 10%;
     }
     .sec02 .profile-info{
         position: relative;
@@ -154,7 +166,7 @@
     }
     /* SEC03 - SKILLS */
     .sec03 h2{
-        margin-bottom: 240px;
+        margin-bottom: 125px;
     }
     .sec03 .skills-box{
         display: grid;
@@ -283,6 +295,45 @@
     .swiper-pagination-bullet-active{
         color: var(--main-color);
     }
+
+    #modal.modal-overlay {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                left: -300px;
+                top: 0;
+                display: none;
+                align-items: center;
+                justify-content: center;
+                background: rgba(71, 58, 58, 0.25);
+            }
+            #modal .modal-window {
+                background: rgba(84, 93, 99, 0.7);      
+                width: 80%;
+                position: relative; 
+            }
+            
+            #modal .title {
+                padding-left: 10px;
+                display: inline;
+                color: white;
+                
+            }
+            #modal .title h2 {
+                display: inline;
+            }
+            #modal .close-area {
+                display: inline;
+                float: right;
+                padding-right: 10px;
+                cursor: pointer;
+                color: white;
+            }
+            
+            #modal .content {
+                width: 100%;
+                color: white;
+            }
     /* SEC05 - CONTACT */
     .sec05{
         height: 800px;
@@ -292,6 +343,9 @@
         grid-template-columns: 1fr 1fr;
         gap: 48px;
         align-items: center;
+    }
+    .sec05 .contact-box img{
+        border-radius: 10%;
     }
     .sec05 .contact-con .comment{
         font-size: 24px;
@@ -332,7 +386,7 @@
     <section class="wrap">
         <header class="header">
             <div class="container">
-                <h1 class="logo"><a href="index.html">Jin's Portfolio</a></h1>
+                <h1 class="logo"><a href="#home">Jin's Portfolio</a></h1>
                 <nav class="nav">
                     <ul class="nav-list">
                         <li><a href="#home">Home</a></li>
@@ -435,7 +489,7 @@
                                 <div class="progress-image">
                                     <img src="./images/ps_icon.png" alt="Photoshop icon">
                                 </div>
-                                <div class="progress-number">60</div>
+                                <div class="progress-number">80</div>
                             </div>
                         </li>
                         <li>
@@ -448,7 +502,35 @@
                                 <div class="progress-image">
                                     <img src="./images/ai_icon.png" alt="Illustrator icon">
                                 </div>
-                                <div class="progress-number">60</div>
+                                <div class="progress-number">70</div>
+                            </div>
+                        </li>
+                        <li></li>
+                        <li>
+                            <h3>Premiere Pro</h3>
+                            <div class="progress-circle">
+                                <svg>
+                                    <circle cx="60" cy="60" r="45"></circle>
+                                    <circle cx="60" cy="60" r="45"></circle>
+                                </svg>
+                                <div class="progress-image">
+                                    <img src="./images/pr_icon.png" alt="Pr icon">
+                                </div>
+                                <div class="progress-number">75</div>
+                            </div>
+                        </li>
+                        <li></li>
+                        <li>
+                            <h3>After Effects</h3>
+                            <div class="progress-circle">
+                                <svg>
+                                    <circle cx="60" cy="60" r="45"></circle>
+                                    <circle cx="60" cy="60" r="45"></circle>
+                                </svg>
+                                <div class="progress-image">
+                                    <img src="./images/ae_icon.png" alt="Ae icon">
+                                </div>
+                                <div class="progress-number">75</div>
                             </div>
                         </li>
                     </ul>
@@ -487,7 +569,13 @@
                       </div>
                       <div data-hash="slide5" class="swiper-slide">
                         <div class="slider-con">
-                            <img src="./images/hollys-mobile.png" alt="hansol">
+                            <img src="./images/hollys-mobile.png" alt="hollys-mobile">
+                            <a class="more" href="https://github.com/kwonjin862/Hollys-mobile" target="_blank"></a>
+                        </div>
+                      </div>
+                      <div data-hash="slide6" class="swiper-slide">
+                        <div class="slider-con">
+                            <img src="./images/hollys-mobile.png" alt="hollys-mobile">
                             <a class="more" href="https://github.com/kwonjin862/Hollys-mobile" target="_blank"></a>
                         </div>
                       </div>
@@ -578,6 +666,22 @@
             }
         });
 
+        const modal=document.getElementById("modal")
+        function modalOn(){
+            modal.style.display="flex"
+
+        }
+        function isModalOn(){
+            return modal.style.display === "flex"
+        }
+        function modalOff() {
+            modal.style.display = "none"
+        }
+        const btnModal = document.getElementById("btn-modal")
+
+            btnModal.addEventListener("click", e => {
+                modalOn()
+        })
     </script>
 </body>
 </html>
