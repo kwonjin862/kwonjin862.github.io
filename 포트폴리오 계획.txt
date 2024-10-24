@@ -1,12 +1,12 @@
 네비   -  
 
-home  -  텍스트 애니메이션을 배경으로, 기존 텍스트 삭제
+home  -  짧은 텍스트 애니메이션으로 background 영상 재생
 
 about  -  프로필 캐릭터 만들기
 
-skills  -  
+skills  -  배치?
 
-portfolio  -  영상 작업물+ , 바로가기는 유튜브? or 모달창으로 띄워서 보여주기?
+portfolio  -  영상 작업물+ , 유튜브 업로드 
 
 contact  -  프로필 캐릭터 & 마무리 멘트 추가
 
